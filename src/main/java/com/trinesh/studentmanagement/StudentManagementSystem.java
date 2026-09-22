@@ -34,4 +34,7 @@ public class StudentManagementSystem {
             System.out.println(student);
         }
     }
+    public boolean removeStudentById(int id) {
+        return students.removeIf(student -> student.getId() == id);
+    }
 }

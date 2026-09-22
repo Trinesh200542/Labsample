@@ -37,4 +37,14 @@ public class StudentManagementSystemTest {
 
         assertNull(student);
     }
+    @Test
+    void testRemoveStudent() {
+        StudentManagementSystem system = new StudentManagementSystem();
+        system.addStudent(new Student(101, "Trinesh", 95.5));
+
+        boolean removed = system.removeStudentById(101);
+
+        assertEquals(true, removed);
+        assertEquals(0, system.getStudentCount());
+    }
 }
