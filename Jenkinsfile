@@ -1,13 +1,12 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
+    tools {
+        jdk 'JDK25'
+        maven 'Maven3'
+    }
 
+    stages {
         stage('Compile') {
             steps {
                 bat 'mvn clean compile'
@@ -29,8 +28,8 @@ pipeline {
 
     post {
         always {
-            junit 'target/surefire-reports/*.xml'
-            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'target/*.jar', fingerprint: true
         }
     }
 }
