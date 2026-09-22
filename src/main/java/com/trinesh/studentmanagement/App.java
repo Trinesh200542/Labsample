@@ -2,7 +2,7 @@ package com.trinesh.studentmanagement;
 
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         StudentManagementSystem system = new StudentManagementSystem();
 
         system.addStudent(new Student(101, "Trinesh", 95.5));
@@ -24,5 +24,10 @@ public class App {
         }
 
         System.out.println("\nTotal Students: " + system.getStudentCount());
+        System.out.println("\nApplication service is running. Press Ctrl+C to stop.");
+
+        while (true) {
+            Thread.sleep(60_000);
+        }
     }
 }
